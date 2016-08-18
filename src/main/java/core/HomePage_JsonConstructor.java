@@ -80,12 +80,14 @@ public class HomePage_JsonConstructor {
         alCPE = new ArrayList<ElementsObjectModel>();
         JsonGenerator jg = openJsonGenerator(jsonFile,jsonPath);
         jg.writeStartArray();
+        
         for (int i = 0; i < this.el_locator.length; i++) {
         	elObj = readElementProperty(driver, this.el_locator[i]); //for each web-element creating single instance of  Object
             alCPE.add(elObj);                                // adding Object as element to the ArrayList
             elObj.printMpe();                                //printing out data of each Object
             addJsonBlock(jg, elObj);
         }
+        
         jg.writeEnd(); // end of Json array
         jg.close();    // close Json generator      
     }
